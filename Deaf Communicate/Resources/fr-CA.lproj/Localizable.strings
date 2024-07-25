@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  Deaf Communicate
+
+  Created by Alex Demerjian on 7/1/22.
+  
+*/
+"Instruction Message One" = "Pour commencer, appuyez sur le bouton du microphone en bas de l’écran.";
+"Copy Button" = "Copie";
+"Save To History Button" = "Enregistrer dans l’historique";
+"Delete Button" = "Supprimer";
+"Text Copied Notification" = "Texte copié";
+"Text History View Instructions" = "Appuyez sur un texte ci-dessous pour l’afficher à nouveau.";
+"Text History View Title" = "Historique du texte";
+"No Text History Alert Title" = "Pas d’historique de texte";
+"No Text History Alert Message" = "Aucun texte n'a encore été enregistré.";
+"Settings View Title" = "Réglages";
+"Settings Font Text One" = "Taille de la police";
+"Settings Font Text Two" = "(Taille de police actuelle : ";
+"Settings Font Text Three" = "Réinitialiser les paramètres du texte";
+"Settings Font Style One" = "Le Style de Police";
+"Settings Font Style Two" = "Sélectionnez un Style de Police";
+"Settings Font Style Three" = "Aperçu du Texte";
+"Settings Font Color One" = "Couleur de la police";
+"Settings Font Color Two" = "Couleur personnalisée";
+"Settings Font Color Three" = "Sélectionnez une couleur de police";
+"Feedback View Title" = "Retour d'information";
+"Feedback Text One" = "Vous avez une demande ou une question ?";
+"Feedback Text Two" = "Veuillez l'envoyer à alxdemer@icloud.com";
+"Privacy Policy Text One" = "En utilisant cette application, vous acceptez la politique de confidentialité de Deaf Communicate.";
+"Privacy Policy Text Two" = "Afficher la politique de confidentialité";
+"Support Text One" = "Avoir des Problèmes?";
+"Support Text Two" = "Visitez le document d'assistance de Deaf Communicate";

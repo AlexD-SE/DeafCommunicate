@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Deaf Communicate
+
+  Created by Alex Demerjian on 7/1/22.
+  
+*/
+"Instruction Message One" = "Para comenzar, toque el botón del micrófono en la parte inferior de la pantalla.";
+"Copy Button" = "Copiar";
+"Save To History Button" = "Guardar en el historial";
+"Delete Button" = "Borrar";
+"Text Copied Notification" = "Texto Copiado";
+"Text History View Instructions" = "Toca un texto a continuación para mostrarlo de nuevo.";
+"Text History View Title" = "Historial de Texto";
+"No Text History Alert Title" = "Sin historial de texto";
+"No Text History Alert Message" = "Aún no se ha guardado ningún texto.";
+"Settings View Title" = "Ajustes";
+"Settings Font Text One" = "Tamaño de Fuente";
+"Settings Font Text Two" = "(Tamaño de fuente actual:";
+"Settings Font Text Three" = "Restablecer la configuración del texto";
+"Settings Font Style One" = "Estilo de Fuente";
+"Settings Font Style Two" = "Seleccione un Estilo de Fuente";
+"Settings Font Style Three" = "Vista Previa de Texto";
+"Settings Font Color One" = "Color de Fuente";
+"Settings Font Color Two" = "Color Personalizado";
+"Settings Font Color Three" = "Seleccione un color de fuente";
+"Feedback View Title" = "Retroalimentación";
+"Feedback Text One" = "¿Tiene una petición o una pregunta?";
+"Feedback Text Two" = "Envíela a alxdemer@icloud.com";
+"Privacy Policy Text One" = "Al usar esta aplicación, usted acepta la Política de privacidad de Deaf Communicate.";
+"Privacy Policy Text Two" = "Ver Política de Privacidad";
+"Support Text One" = "¿Teniendo Problemas?";
+"Support Text Two" = "Visite el documento de soporte de Deaf Communicate";
+

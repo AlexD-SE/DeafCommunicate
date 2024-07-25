@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Deaf Communicate
+
+  Created by Alex Demerjian on 7/1/22.
+  
+*/
+"Instruction Message One" = "Για να ξεκινήσετε, πατήστε το κουμπί μικροφώνου στο κάτω μέρος της οθόνης.";
+"Copy Button" = "Αντίγραφο";
+"Save To History Button" = "Αποθήκευση στο ιστορικό";
+"Delete Button" = "Διαγράφω";
+"Text Copied Notification" = "Το κείμενο αντιγράφηκε";
+"Text History View Instructions" = "Πατήστε ένα κείμενο παρακάτω για να το εμφανίσετε ξανά.";
+"Text History View Title" = "Κείμενο Ιστορία";
+"No Text History Alert Title" = "Δεν υπάρχει ιστορικό κείμενο";
+"No Text History Alert Message" = "Δεν έχει αποθηκευτεί ακόμα κείμενο.";
+"Settings View Title" = "Ρυθμίσεις";
+"Settings Font Text One" = "Μέγεθος γραμματοσειράς";
+"Settings Font Text Two" = "(Τρέχον μέγεθος γραμματοσειράς: ";
+"Settings Font Text Three" = "Επαναφορά ρυθμίσεων κειμένου";
+"Settings Font Style One" = "Στυλ γραμματοσειράς";
+"Settings Font Style Two" = "Επιλογή στυλ γραμματοσειράς";
+"Settings Font Style Three" = "Προεπισκόπηση κειμένου";
+"Settings Font Color One" = "Χρώμα γραμματοσειράς";
+"Settings Font Color Two" = "Προσαρμοσμένο χρώμα";
+"Settings Font Color Three" = "Επιλογή χρώματος γραμματοσειράς";
+"Feedback View Title" = "Ανάδραση";
+"Feedback Text One" = "Έχετε κάποιο αίτημα ή ερώτηση;";
+"Feedback Text Two" = "Στείλτε το στο alxdemer@icloud.com";
+"Privacy Policy Text One" = "Χρησιμοποιώντας αυτήν την εφαρμογή, συμφωνείτε με την Πολιτική Απορρήτου της Deaf Communication.";
+"Privacy Policy Text Two" = "Δείτε την Πολιτική Απορρήτου";
+"Support Text One" = "Αντιμετωπίζετε πρόβλημα;";
+"Support Text Two" = "Επισκεφθείτε το έγγραφο υποστήριξης του Deaf Communicate";
+

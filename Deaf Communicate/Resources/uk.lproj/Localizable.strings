@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Deaf Communicate
+
+  Created by Alex Demerjian on 7/1/22.
+  
+*/
+"Instruction Message One" = "Для початку натисніть кнопку мікрофона внизу екрана.";
+"Copy Button" = "Копіювати";
+"Save To History Button" = "Зберегти в історії";
+"Delete Button" = "Видалити";
+"Text Copied Notification" = "Текст скопійовано";
+"Text History View Instructions" = "Торкніться тексту нижче, щоб відобразити його знову.";
+"Text History View Title" = "Історія тексту";
+"No Text History Alert Title" = "Немає текстової історії";
+"No Text History Alert Message" = "Текст ще не збережено.";
+"Settings View Title" = "Налаштування";
+"Settings Font Text One" = "Розмір шрифту";
+"Settings Font Text Two" = "(Поточний розмір шрифту: ";
+"Settings Font Text Three" = "Скидання налаштувань тексту";
+"Settings Font Style One" = "Стиль шрифту";
+"Settings Font Style Two" = "Виберіть стиль шрифту";
+"Settings Font Style Three" = "Попередній перегляд тексту";
+"Settings Font Color One" = "Колір шрифту";
+"Settings Font Color Two" = "Власний колір";
+"Settings Font Color Three" = "Виберіть колір шрифту";
+"Feedback View Title" = "Зворотній зв'язок";
+"Feedback Text One" = "Є запит чи запитання?";
+"Feedback Text Two" = "Надішліть його на адресу alxdemer@icloud.com";
+"Privacy Policy Text One" = "Використовуючи цей додаток, ви погоджуєтесь з Політикою конфіденційності Deaf Communicate.";
+"Privacy Policy Text Two" = "Переглянути політику конфіденційності";
+"Support Text One" = "Виникли проблеми?";
+"Support Text Two" = "Відвідайте документ підтримки Deaf Communicate";
+

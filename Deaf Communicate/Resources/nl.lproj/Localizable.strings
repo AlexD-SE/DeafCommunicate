@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Deaf Communicate
+
+  Created by Alex Demerjian on 7/1/22.
+  
+*/
+"Instruction Message One" = "Tik om te beginnen op de microfoonknop onder aan het scherm.";
+"Copy Button" = "Kopiëren";
+"Save To History Button" = "Opslaan in geschiedenis";
+"Delete Button" = "Verwijderen";
+"Text Copied Notification" = "Tekst Gekopieerd";
+"Text History View Instructions" = "Tik hieronder op een tekst om deze opnieuw weer te geven.";
+"Text History View Title" = "Tekstgeschiedenis";
+"No Text History Alert Title" = "Geen tekstgeschiedenis";
+"No Text History Alert Message" = "Er is nog geen tekst opgeslagen.";
+"Settings View Title" = "Instellingen";
+"Settings Font Text One" = "Lettertypegrootte";
+"Settings Font Text Two" = "(Huidige lettergrootte:";
+"Settings Font Text Three" = "Tekstinstellingen opnieuw instellen";
+"Settings Font Style One" = "Lettertype Stijl";
+"Settings Font Style Two" = "Selecteer een letterstijl";
+"Settings Font Style Three" = "Tekstvoorbeeld";
+"Settings Font Color One" = "Letterkleur";
+"Settings Font Color Two" = "Aangepaste kleur";
+"Settings Font Color Three" = "Selecteer een letterkleur";
+"Feedback View Title" = "Terugkoppeling";
+"Feedback Text One" = "Heeft u een verzoek of een vraag?";
+"Feedback Text Two" = "Stuur het naar alxdemer@icloud.com";
+"Privacy Policy Text One" = "Door deze app te gebruiken, gaat u akkoord met het privacybeleid van Deaf Communicate.";
+"Privacy Policy Text Two" = "Privacybeleid bekijken";
+"Support Text One" = "Problemen hebben?";
+"Support Text Two" = "Bezoek het ondersteuningsdocument van Deaf Communicate";
+

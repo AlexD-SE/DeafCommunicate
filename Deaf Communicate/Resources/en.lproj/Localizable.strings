@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Deaf Communicate
+
+  Created by Alex Demerjian on 7/1/22.
+  
+*/
+"Instruction Message One" = "To begin, tap the microphone button at the bottom of the screen.";
+"Copy Button" = "Copy";
+"Save To History Button" = "Save To History";
+"Delete Button" = "Delete";
+"Text Copied Notification" = "Text Copied";
+"Text History View Instructions" = "Tap a text below to show it again.";
+"Text History View Title" = "Text History";
+"No Text History Alert Title" = "No Text History";
+"No Text History Alert Message" = "No text has been saved yet.";
+"Settings View Title" = "Settings";
+"Settings Font Text One" = "Font Size";
+"Settings Font Text Two" = "(Current font size: ";
+"Settings Font Text Three" = "Reset Text Settings";
+"Settings Font Style One" = "Font Style";
+"Settings Font Style Two" = "Select a font style";
+"Settings Font Style Three" = "Text Preview";
+"Settings Font Color One" = "Font Color";
+"Settings Font Color Two" = "Custom Color";
+"Settings Font Color Three" = "Select a font color";
+"Feedback View Title" = "Feedback";
+"Feedback Text One" = "Have a request or a question?";
+"Feedback Text Two" = "Please send it to alxdemer@icloud.com";
+"Privacy Policy Text One" = "By using this app, you agree to Deaf Communicate's Privacy Policy.";
+"Privacy Policy Text Two" = "View Privacy Policy";
+"Support Text One" = "Having Trouble?";
+"Support Text Two" = "Visit Deaf Communicate's Support Document";
+

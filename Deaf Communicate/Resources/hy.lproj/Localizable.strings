@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  Deaf Communicate
+
+  Created by Alex Demerjian on 7/1/22.
+  
+*/
+"Instruction Message One" = "Սկսելու համար հպեք ներքևի մոխրագույն հատվածին:";
+"Copy Button" = "Պատճենել";
+"Save To History Button" = "Պահել պատմության մեջ";
+"Delete Button" = "Ջնջել";
+"Text Copied Notification" = "Տեքստը պատճենված է";
+"Text History View Instructions" = "Հպեք ներքևում գտնվող տեքստին՝ այն նորից ցուցադրելու համար:";
+"Text History View Title" = "Տեքստային պատմություն";
+"No Text History Alert Title" = "Տեքստի պատմություն չկա";
+"No Text History Alert Message" = "Ոչ մի տեքստ դեռ չի պահպանվել:";
+"Settings View Title" = "Կարգավորումներ";
+"Settings Font Text One" = "Տառատեսակի չափը";
+"Settings Font Text Two" = "(Ընթացիկ տառաչափը: ";
+"Settings Font Style One" = "Տառատեսակի ոճը";
+"Settings Font Style Two" = "Ընտրեք տառատեսակի ոճը";
+"Settings Font Style Three" = "Տեքստի նախադիտում:";
+"Settings Font Color One" = "Տառատեսակի գույնը";
+"Settings Font Color Two" = "Պատվերով գույն";
+"Settings Font Color Three" = "Ընտրեք տառատեսակի գույնը";
+"Feedback View Title" = "Հետադարձ կապ";
+"Feedback Text One" = "Ունե՞ք հարցում կամ հարց:";
+"Feedback Text Two" = "Խնդրում ենք ուղարկել այն alxdemer@icloud.com հասցեին";
+"Privacy Policy Text One" = "Օգտագործելով այս հավելվածը՝ դուք համաձայնվում եք Deaf Communicate-ի գաղտնիության քաղաքականությանը:";
+"Privacy Policy Text Two" = "Դիտեք Գաղտնիության քաղաքականությունը";
+"Support Text One" = "Խնդիր ունե՞ք";
+"Support Text Two" = "Այցելեք Deaf Communicate's Support Document-ը";
+

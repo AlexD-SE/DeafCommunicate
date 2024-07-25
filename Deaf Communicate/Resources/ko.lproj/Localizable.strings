@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Deaf Communicate
+
+  Created by Alex Demerjian on 7/1/22.
+  
+*/
+"Instruction Message One" = "시작하려면 화면 하단의 마이크 버튼을 누르세요";
+"Copy Button" = "복사";
+"Save To History Button" = "기록에 저장";
+"Delete Button" = "삭제하다";
+"Text Copied Notification" = "텍스트 복사됨";
+"Text History View Instructions" = "아래 텍스트를 탭하면 다시 표시됩니다.";
+"Text History View Title" = "텍스트 기록";
+"No Text History Alert Title" = "텍스트 기록 없음";
+"No Text History Alert Message" = "아직 저장된 텍스트가 없습니다.";
+"Settings View Title" = "설정";
+"Settings Font Text One" = "글꼴 크기";
+"Settings Font Text Two" = "(현재 글꼴 크기:";
+"Settings Font Text Three" = "텍스트 설정 재설정";
+"Settings Font Style One" = "글꼴 스타일";
+"Settings Font Style Two" = "글꼴 스타일 선택";
+"Settings Font Style Three" = "텍스트 미리보기";
+"Settings Font Color One" = "글꼴 색상";
+"Settings Font Color Two" = "사용자 정의 색상";
+"Settings Font Color Three" = "글꼴 색상 선택";
+"Feedback View Title" = "피드백";
+"Feedback Text One" = "요청이나 질문이 있으십니까?";
+"Feedback Text Two" = "alxdemer@icloud.com 에게 보내주십시오.";
+"Privacy Policy Text One" = "이 앱을 사용하면 Deaf Communicate의 개인 정보 보호 정책에 동의하는 것입니다.";
+"Privacy Policy Text Two" = "개인정보 보호정책 보기";
+"Support Text One" = "문제가있다?";
+"Support Text Two" = "Deaf Communicate 지원 문서 방문";
+

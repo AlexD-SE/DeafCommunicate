@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Deaf Communicate
+
+  Created by Alex Demerjian on 7/1/22.
+  
+*/
+"Instruction Message One" = "Pentru a începe, atingeți butonul microfon din partea de jos a ecranului.";
+"Copy Button" = "Copie";
+"Save To History Button" = "Salvați în istoric";
+"Delete Button" = "Șterge";
+"Text Copied Notification" = "Text copiat";
+"Text History View Instructions" = "Atingeți un text de mai jos pentru a-l afișa din nou.";
+"Text History View Title" = "Istoricul Textului";
+"No Text History Alert Title" = "Fără istoric text";
+"No Text History Alert Message" = "Niciun text nu a fost salvat încă.";
+"Settings View Title" = "Setări";
+"Settings Font Text One" = "Marimea fontului";
+"Settings Font Text Two" = "(Dimensiunea actuală a fontului: ";
+"Settings Font Text Three" = "Resetare setări text";
+"Settings Font Style One" = "Stilul fontului";
+"Settings Font Style Two" = "Selectați un stil de font";
+"Settings Font Style Three" = "Previzualizare text";
+"Settings Font Color One" = "Culoare font";
+"Settings Font Color Two" = "Culoare personalizată";
+"Settings Font Color Three" = "Selectați o culoare de font";
+"Feedback View Title" = "Părere";
+"Feedback Text One" = "Ai o cerere sau o întrebare?";
+"Feedback Text Two" = "Vă rugăm să-l trimiteți la alxdemer@icloud.com";
+"Privacy Policy Text One" = "Prin utilizarea acestei aplicații, sunteți de acord cu Politica de confidențialitate Deaf Communicate.";
+"Privacy Policy Text Two" = "Vedeți Politica de confidențialitate";
+"Support Text One" = "A avea probleme?";
+"Support Text Two" = "Vizitați documentul de asistență al Deaf Communicate";
+
