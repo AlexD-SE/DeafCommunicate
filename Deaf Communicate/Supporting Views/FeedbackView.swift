@@ -10,8 +10,8 @@ import SwiftUI
 struct FeedbackView: View{
     
     //General variables
-    private let privacyPolicy = URL(string:"https://www.freeprivacypolicy.com/live/c7942d84-a4c8-4a3b-b9a9-57573269459d")!
-    private let supportDoc = URL(string:"https://docs.google.com/document/d/1RDXhsm-Vx-5QgsBHx27UUlPXnfyekYKgB7kEtLblntk/edit?usp=sharing")!
+    private let privacyPolicy = URL(string:"https://www.freeprivacypolicy.com/live/9f2bb654-2ba1-48de-94a1-bff5e024a716")!
+    private let supportDoc = URL(string:"https://docs.google.com/document/d/1e6b_tEsgU3HorVNb0ic0usIBWacegxeKhjYUq46RU1I/edit?usp=sharing")!
     
     //Localized variables (for multi language support)
     let feedbackViewTitle : LocalizedStringKey = "Feedback View Title"
@@ -59,7 +59,7 @@ struct FeedbackView: View{
             Link(privacyPolicyTextTwo, destination: privacyPolicy)
                 .padding()
             
-            Text("© 2024 Alexander Demerjian")
+            Text("© 2025 Alexander Demerjian")
             
         }
         

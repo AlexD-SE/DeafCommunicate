@@ -5,7 +5,10 @@
   Created by Alex Demerjian on 7/1/22.
   
 */
-"Instruction Message One" = "Для початку натисніть кнопку мікрофона внизу екрана.";
+"Use Microphone Button Tip Title" = "Диктуйте за допомогою мікрофона";
+"Use Microphone Button Tip Text" = "Щоб почати, натисніть кнопку мікрофона, а потім почніть говорити. Коли закінчите, знову торкніться кнопки мікрофона.";
+"Use Keyboard Tip Title" = "Введіть або відредагуйте текст";
+"Use Keyboard Tip Text" = "Ви можете торкнутися сірої області, щоб ввести або відредагувати текст.";
 "Copy Button" = "Копіювати";
 "Save To History Button" = "Зберегти в історії";
 "Delete Button" = "Видалити";
@@ -26,7 +29,7 @@
 "Settings Font Color Three" = "Виберіть колір шрифту";
 "Feedback View Title" = "Зворотній зв'язок";
 "Feedback Text One" = "Є запит чи запитання?";
-"Feedback Text Two" = "Надішліть його на адресу alxdemer@icloud.com";
+"Feedback Text Two" = "Надішліть його на адресу alexander.demerjian@icloud.com";
 "Privacy Policy Text One" = "Використовуючи цей додаток, ви погоджуєтесь з Політикою конфіденційності Deaf Communicate.";
 "Privacy Policy Text Two" = "Переглянути політику конфіденційності";
 "Support Text One" = "Виникли проблеми?";

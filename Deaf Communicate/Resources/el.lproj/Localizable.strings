@@ -5,7 +5,10 @@
   Created by Alex Demerjian on 7/1/22.
   
 */
-"Instruction Message One" = "Για να ξεκινήσετε, πατήστε το κουμπί μικροφώνου στο κάτω μέρος της οθόνης.";
+"Use Microphone Button Tip Title" = "Υπαγόρευση με μικρόφωνο";
+"Use Microphone Button Tip Text" = "Για να ξεκινήσετε, πατήστε το κουμπί του μικροφώνου και μετά ξεκινήστε να μιλάτε. Πατήστε ξανά το κουμπί του μικροφώνου όταν τελειώσετε.";
+"Use Keyboard Tip Title" = "Πληκτρολόγηση ή επεξεργασία κειμένου";
+"Use Keyboard Tip Text" = "Μπορείτε να πατήσετε την γκρίζα περιοχή για να πληκτρολογήσετε ή να επεξεργαστείτε το κείμενο.";
 "Copy Button" = "Αντίγραφο";
 "Save To History Button" = "Αποθήκευση στο ιστορικό";
 "Delete Button" = "Διαγράφω";
@@ -26,7 +29,7 @@
 "Settings Font Color Three" = "Επιλογή χρώματος γραμματοσειράς";
 "Feedback View Title" = "Ανάδραση";
 "Feedback Text One" = "Έχετε κάποιο αίτημα ή ερώτηση;";
-"Feedback Text Two" = "Στείλτε το στο alxdemer@icloud.com";
+"Feedback Text Two" = "Στείλτε το στο alexander.demerjian@icloud.com";
 "Privacy Policy Text One" = "Χρησιμοποιώντας αυτήν την εφαρμογή, συμφωνείτε με την Πολιτική Απορρήτου της Deaf Communication.";
 "Privacy Policy Text Two" = "Δείτε την Πολιτική Απορρήτου";
 "Support Text One" = "Αντιμετωπίζετε πρόβλημα;";

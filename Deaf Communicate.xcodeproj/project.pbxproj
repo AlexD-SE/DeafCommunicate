@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		210FCDA02AB384AD00419C53 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210FCD9F2AB384AD00419C53 /* MainView.swift */; };
+		212557482CC9C3E6007649F6 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212557472CC9C3E6007649F6 /* Tips.swift */; };
 		215242AC2AABDBB100957175 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215242AB2AABDBB100957175 /* NotificationView.swift */; };
 		215BAF3E2AAAC5E200D206BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 215BAF3D2AAAC5E200D206BD /* LaunchScreen.storyboard */; };
 		2184689D2BBA492B0094DB80 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184689C2BBA492B0094DB80 /* Extensions.swift */; };
+		21B6D2E62CA5CB0300C5A695 /* TranscriptionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B6D2E52CA5CB0300C5A695 /* TranscriptionEngine.swift */; };
+		21FB9AF12CAB247A00B5B380 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB9AF02CAB247A00B5B380 /* UserDefaultsManager.swift */; };
 		6D1A145B2A48AA0400DC0BF7 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A145A2A48AA0400DC0BF7 /* MainViewModel.swift */; };
 		6D75059329EDD4690032A710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D75059229EDD4690032A710 /* Assets.xcassets */; };
 		6D75059629EDD4690032A710 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D75059529EDD4690032A710 /* Preview Assets.xcassets */; };
@@ -21,14 +24,33 @@
 		6D7505B229EDD87D0032A710 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D7505B029EDD87D0032A710 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		21B6D2DE2CA4EABD00C5A695 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		210FCD9F2AB384AD00419C53 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		212557472CC9C3E6007649F6 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		215242A82AAB9B6A00957175 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		215242A92AAB9EDF00957175 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		215242AA2AABBC0F00957175 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		215242AB2AABDBB100957175 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		215BAF3D2AAAC5E200D206BD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2184689C2BBA492B0094DB80 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		21B6D2B02CA47B6700C5A695 /* Deaf Communicate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Deaf Communicate.entitlements"; sourceTree = "<group>"; };
+		21B6D2BC2CA4EABD00C5A695 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		21B6D2C72CA4EABD00C5A695 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		21B6D2E52CA5CB0300C5A695 /* TranscriptionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionEngine.swift; sourceTree = "<group>"; };
+		21FB9AF02CAB247A00B5B380 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		6D1A145A2A48AA0400DC0BF7 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		6D75058B29EDD4680032A710 /* Deaf Communicate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deaf Communicate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D75059229EDD4690032A710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +107,8 @@
 		2184689F2BBA4C0F0094DB80 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				21B6D2E52CA5CB0300C5A695 /* TranscriptionEngine.swift */,
+				21FB9AF02CAB247A00B5B380 /* UserDefaultsManager.swift */,
 				2184689C2BBA492B0094DB80 /* Extensions.swift */,
 				6D75059229EDD4690032A710 /* Assets.xcassets */,
 				6D7505B029EDD87D0032A710 /* Localizable.strings */,
@@ -92,10 +116,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		21B6D2BB2CA4EABD00C5A695 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21B6D2BC2CA4EABD00C5A695 /* Intents.framework */,
+				21B6D2C72CA4EABD00C5A695 /* IntentsUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6D75058229EDD4680032A710 = {
 			isa = PBXGroup;
 			children = (
 				6D75058D29EDD4680032A710 /* Deaf Communicate */,
+				21B6D2BB2CA4EABD00C5A695 /* Frameworks */,
 				6D75058C29EDD4680032A710 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,7 +145,9 @@
 		6D75058D29EDD4680032A710 /* Deaf Communicate */ = {
 			isa = PBXGroup;
 			children = (
+				21B6D2B02CA47B6700C5A695 /* Deaf Communicate.entitlements */,
 				6D75059E29EDD5B10032A710 /* DeafCommunicateApp.swift */,
+				212557472CC9C3E6007649F6 /* Tips.swift */,
 				218468982BBA347D0094DB80 /* Main */,
 				218468992BBA34820094DB80 /* Supporting Views */,
 				2184689F2BBA4C0F0094DB80 /* Resources */,
@@ -138,6 +174,7 @@
 				6D75058729EDD4680032A710 /* Sources */,
 				6D75058829EDD4680032A710 /* Frameworks */,
 				6D75058929EDD4680032A710 /* Resources */,
+				21B6D2DE2CA4EABD00C5A695 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -155,8 +192,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					6D75058A29EDD4680032A710 = {
 						CreatedOnToolsVersion = 14.3;
@@ -214,6 +251,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2184689D2BBA492B0094DB80 /* Extensions.swift in Sources */,
+				212557482CC9C3E6007649F6 /* Tips.swift in Sources */,
+				21B6D2E62CA5CB0300C5A695 /* TranscriptionEngine.swift in Sources */,
+				21FB9AF12CAB247A00B5B380 /* UserDefaultsManager.swift in Sources */,
 				6D7505A729EDD68D0032A710 /* TextHistoryView.swift in Sources */,
 				210FCDA02AB384AD00419C53 /* MainView.swift in Sources */,
 				6D7505A929EDD68D0032A710 /* SettingsView.swift in Sources */,
@@ -255,6 +295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -317,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -374,6 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Deaf Communicate/Deaf Communicate.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Deaf Communicate/Preview Content\"";
@@ -383,19 +426,19 @@
 				INFOPLIST_FILE = "Deaf-Communicate-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Deaf Communicate";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To enable speech to text conversion.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "To enable speech to text conversion.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To transcribe your speech/convert it to text.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "To transcribe your speech/convert it to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "DeafCom.Deaf-Communicator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -413,6 +456,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Deaf Communicate/Deaf Communicate.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Deaf Communicate/Preview Content\"";
@@ -422,19 +466,19 @@
 				INFOPLIST_FILE = "Deaf-Communicate-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Deaf Communicate";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To enable speech to text conversion.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "To enable speech to text conversion.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To transcribe your speech/convert it to text.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "To transcribe your speech/convert it to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "DeafCom.Deaf-Communicator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

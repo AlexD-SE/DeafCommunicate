@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotificationView: View {
     
-    public var symbol: String
+    public var symbol: Image
     public var text: LocalizedStringKey
     @Environment(\.colorScheme) var appearance
     
@@ -22,7 +22,7 @@ struct NotificationView: View {
                 .backgroundStyle(.thinMaterial)
                 .cornerRadius(8)
             VStack{
-                Image(symbol)
+                symbol
                     .resizable()
                     .frame(width: 50, height: 50)
                 Text(text)

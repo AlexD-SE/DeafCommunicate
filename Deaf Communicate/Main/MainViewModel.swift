@@ -8,17 +8,18 @@
 import Foundation
 import SwiftUI
 import Speech
+import Intents
 
-class MainViewModel: ObservableObject{
+class MainViewModel: ObservableObject, TranscriptionEngineDelegate{
     
     //Localized variables (multi language support)
     let textCopiedNotification: LocalizedStringKey = "Text Copied Notification"
-    let instructionMessageOne:LocalizedStringKey = "Instruction Message One"
     
     //Speech recognition variables
-    private let audioEngine = AVAudioEngine()
-    var speechRecognizer = SFSpeechRecognizer(locale: Locale.current)
-    @Published var isRecording = false
+    @Published var isTranscribing = false
+    @Published var showAlert: Bool = false
+    @Published var alertTitle: String = ""
+    @Published var alertMessage: String = ""
     
     // Text variables
     @Published var text = ""
@@ -35,100 +36,25 @@ class MainViewModel: ObservableObject{
     // Notification variables
     @Published var showNotification = false
     @Published var notificationText: LocalizedStringKey? = nil
-    @Published var notificationSymbol: String? = nil
+    @Published var notificationSymbol: Image? = nil
     
+    @Published var pressMicToBeginTip = UseMicrophoneButtonTip()
+    @Published var useKeyboardTip = UseKeyboardTip()
     
-    /// Starts speech recognition by using the AVAudioEngine to get microphone input and process it through an SFSpeechRecognizer instance for the current locale.
-    func startSpeechRecognition(){
-        
-        // Verify that there is a speech recognizer instance for the current locale
-        guard let speechRecognizer = speechRecognizer else {return}
-        
-        // Check if the Speech Recognizer is available
-        guard speechRecognizer.isAvailable == true else {return}
-        
-        // Create recognition request for audio buffers to enable real-time processing of audio
-        let recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        
-        // Configure recognition request
-        recognitionRequest.shouldReportPartialResults = true
-        speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
-            
-            if let result = result {
-                
-                // Update view with transcribed text
-                DispatchQueue.main.async{
-                    self.text = result.bestTranscription.formattedString
-                }
-                
-            } else if let error = error {
-                
-                print(error.localizedDescription)
-                
-            }
-        }
-        
-        // Get the input node of the audio engine
-        let inputNode = audioEngine.inputNode
-        
-        // Get the format that the input node will produce
-        let recordingFormat = inputNode.outputFormat(forBus: 0)
-        
-        // Install callback on the input node with the matching format that will get the audio buffer data as it comes in
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
-            
-            // Append the audio buffer data to the recognition request so that it can be processed by its recognition task
-            recognitionRequest.append(buffer)
-        }
-        
-        // Prepare the audio engine
-        audioEngine.prepare()
-        
-        // Try to start the audio engine and update the isRecording variable for the view
-        do {
-            try audioEngine.start()
-            isRecording = true
-        } catch {
-            print("Audio engine failed to start")
-        }
+    let firstTimeUsingApp = UserDefaultsManager.shared.firstTimeUsingApp()
+    
+    init(){
+        UseMicrophoneButtonTip.firstTimeUsingApp = firstTimeUsingApp
+        UseKeyboardTip.firstTimeUsingApp = firstTimeUsingApp
     }
     
-    /// Stops speech recognition. This will stop the AVAudioEngine instance from processing microphone input and remove the callback on its input node.
-    func stopSpeechRecognition(){
-        audioEngine.stop()
-        audioEngine.inputNode.removeTap(onBus: 0)
-        
-        DispatchQueue.main.async{
-            self.isRecording = false
-        }
+    func startTranscription() async{
+        await TranscriptionEngine.shared.startTranscription()
     }
     
-    /// Configures the user defaults to restore the user's past font settings.
-    func configureUserDefaults(){
-        
-        if let fontSize = UserDefaults.standard.object(forKey: "fontSize") as? Double{
-            self.fontSize = fontSize
-        }else{
-            UserDefaults.standard.set(fontSize, forKey: "fontSize")
-        }
-        
-        if let fontStyle = UserDefaults.standard.object(forKey: "fontStyle") as? String{
-            self.fontStyle = fontStyle
-        }else{
-            UserDefaults.standard.set(fontStyle, forKey: "fontStyle")
-        }
-         
-        if let isCustomFontColor = UserDefaults.standard.object(forKey: "isCustomFontColor") as? Bool{
-            self.isCustomFontColor = isCustomFontColor
-        }else{
-            UserDefaults.standard.set(isCustomFontColor, forKey: "isCustomFontColor")
-        }
-        
-        if let fontColorInt = UserDefaults.standard.object(forKey: "fontColorInt") as? Int{
-            fontColor = fontColorInt.determineColor()
-        }else{
-            UserDefaults.standard.set(fontColor.determineInt(), forKey: "fontColorInt")
-        }
+    func stopTranscription() async{
+        await TranscriptionEngine.shared.stopTranscription()
+        UseKeyboardTip.didFinishDictate = true
     }
     
     /// Copies the text to the system wide general pasteboard.
@@ -138,7 +64,7 @@ class MainViewModel: ObservableObject{
         
         DispatchQueue.main.async{
             self.notificationText = self.textCopiedNotification
-            self.notificationSymbol = "CopyIcon"
+            self.notificationSymbol = Image(systemName: "document.on.document")
             
             withAnimation{
                 self.showNotification.toggle()
@@ -176,5 +102,37 @@ class MainViewModel: ObservableObject{
         text=""
         
     }
+    
+    func didStartTranscription() {
+        DispatchQueue.main.async{
+            self.isTranscribing = true
+        }
+    }
+    
+    func transcribed(_ result: String) {
+        DispatchQueue.main.async{
+            self.text = result
+        }
+    }
+    
+    func didStopTranscription() {
+        DispatchQueue.main.async{
+            self.isTranscribing = false
+        }
+    }
+    
+    func transcriptionEngineError(_ error: TranscriptionEngineError){
+        
+        Task.init(priority: .high){
+            await stopTranscription()
+        }
+        
+        DispatchQueue.main.async{
+            self.alertTitle = "Failed To Start Transcription"
+            self.alertMessage = "\(error.localizedDescription)"
+            self.showAlert = true
+        }
+    }
+    
     
 }

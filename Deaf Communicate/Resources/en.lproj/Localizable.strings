@@ -5,7 +5,10 @@
   Created by Alex Demerjian on 7/1/22.
   
 */
-"Instruction Message One" = "To begin, tap the microphone button at the bottom of the screen.";
+"Use Microphone Button Tip Title" = "Dictate With Microphone";
+"Use Microphone Button Tip Text" = "To begin, tap the microphone button and then start speaking. Tap the microphone button again when done.";
+"Use Keyboard Tip Title" = "Type Or Edit Text";
+"Use Keyboard Tip Text" = "You can tap the gray area to type or edit the text.";
 "Copy Button" = "Copy";
 "Save To History Button" = "Save To History";
 "Delete Button" = "Delete";
@@ -26,7 +29,7 @@
 "Settings Font Color Three" = "Select a font color";
 "Feedback View Title" = "Feedback";
 "Feedback Text One" = "Have a request or a question?";
-"Feedback Text Two" = "Please send it to alxdemer@icloud.com";
+"Feedback Text Two" = "Please send it to alexander.demerjian@icloud.com";
 "Privacy Policy Text One" = "By using this app, you agree to Deaf Communicate's Privacy Policy.";
 "Privacy Policy Text Two" = "View Privacy Policy";
 "Support Text One" = "Having Trouble?";

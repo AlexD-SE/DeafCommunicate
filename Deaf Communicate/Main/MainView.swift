@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct MainView: View {
     
     @StateObject public var model = MainViewModel()
-    @State private var freshLaunch = true
     @Environment(\.colorScheme) var colorScheme
     @FocusState var textEditorFocused : Bool
     
@@ -31,11 +31,6 @@ struct MainView: View {
                     
                     VStack{
                         
-                        Text(model.text == "" ? model.instructionMessageOne : "")
-                            .font(.system(size:18))
-                            .padding()
-                            .multilineTextAlignment(.center)
-                        
                         ScrollView{
                             
                             TextEditor(text: $model.text)
@@ -43,13 +38,24 @@ struct MainView: View {
                                 .font(Font.custom(model.fontStyle, size:model.fontSize))
                                 .autocorrectionDisabled(true)
                                 .foregroundColor(model.isCustomFontColor == false ? colorScheme == .dark ? Color.white : Color.black : model.fontColor)
-                                .frame(height: textEditorFocused == true ? geometry.size.height*0.8 : geometry.size.height*0.85)
+                                .frame(height: textEditorFocused == true ? geometry.size.height*0.75 : geometry.size.height*0.8)
                                 .scrollContentBackground(.hidden)
                                 .background(.gray.opacity(0.3))
-                                .cornerRadius(8)
-                            
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .overlay{
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.blue, lineWidth: 2)
+                                }
+                                .padding([.top, .leading, .trailing])
+                                
                         }
                         .scrollDismissesKeyboard(.interactively)
+                        .padding(.top)
+                        .popoverTip(model.useKeyboardTip)
+                        .onTapGesture{
+                            model.useKeyboardTip.invalidate(reason: .actionPerformed)
+                        }
+                        
                         
                         if !Locale.current.identifier.contains("hy_"){
                             
@@ -57,21 +63,36 @@ struct MainView: View {
                                 
                                 Button{
                                     
-                                    if model.isRecording{
-                                        DispatchQueue.global(qos: .userInitiated).async{
-                                            model.stopSpeechRecognition()
+                                    if model.isTranscribing{
+                                        
+                                        Task.init(priority: .userInitiated){
+                                            await model.stopTranscription()
                                         }
+                                        
                                     }else{
-                                        DispatchQueue.global(qos: .userInitiated).async{
-                                            model.startSpeechRecognition()
+                                        
+                                        Task.init(priority: .userInitiated){
+                                            await model.startTranscription()
                                         }
+                                        
                                     }
 
                                 }label:{
-                                    Image(model.isRecording ? "MicOnIcon" : "MicOffIcon")
-                                        .resizable()
-                                        .frame(width: 100, height: 100)
-                                    
+                                    if model.isTranscribing{
+                                        Image(systemName: "microphone.circle")
+                                            .resizable()
+                                            .frame(width: 100, height: 100)
+                                            .foregroundStyle(.green)
+                                    }else{
+                                        Image(systemName: "microphone.slash.circle")
+                                            .resizable()
+                                            .frame(width: 100, height: 100)
+                                            .foregroundStyle(.red)
+                                    }
+                                }
+                                .popoverTip(model.pressMicToBeginTip)
+                                .onTapGesture {
+                                    model.pressMicToBeginTip.invalidate(reason: .actionPerformed)
                                 }
                                 
                             }
@@ -104,7 +125,7 @@ struct MainView: View {
                                 }
                                 
                             }label:{
-                                Image("DownArrowIcon")
+                                Image(systemName: "ellipsis.circle")
                                     .resizable()
                                     .frame(width: 30, height: 30)
                             }
@@ -120,15 +141,15 @@ struct MainView: View {
                                     model.showTextHistory = true
                                 }
                             }label:{
-                                Image("TextHistoryIcon")
+                                Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
                                     .resizable()
-                                    .frame(width: 30, height: 30)
+                                    .frame(width: 33, height: 30)
                             }
                         }
                         
                         ToolbarItem(placement: .topBarTrailing){
                             NavigationLink(destination: SettingsView().environmentObject(model)){
-                                Image("GearIcon")
+                                Image(systemName: "gear")
                                     .resizable()
                                     .frame(width: 30, height: 30)
                             }
@@ -136,9 +157,9 @@ struct MainView: View {
                         
                         ToolbarItem(placement: .topBarTrailing){
                             NavigationLink(destination: FeedbackView()){
-                                Image("FeedbackIcon")
+                                Image(systemName: "questionmark.bubble")
                                     .resizable()
-                                    .frame(width: 30, height: 30)
+                                    .frame(width: 28, height: 28)
                             }
                         }
                         
@@ -147,10 +168,10 @@ struct MainView: View {
                 }
                 .onAppear(){
                     
-                    if freshLaunch{
-                        model.configureUserDefaults()
-                        freshLaunch = false
-                    }
+                    UserDefaultsManager.shared.loadTextUserDefaults(fontSize: &model.fontSize, fontStyle: &model.fontStyle, isCustomFontColor: &model.isCustomFontColor, fontColor: &model.fontColor)
+                        
+                    TranscriptionEngine.shared.delegate = model
+                    TranscriptionEngine.shared.prepare()
                     
                 }
                 
@@ -164,7 +185,9 @@ struct MainView: View {
                 TextHistoryView(showTextHistory: $model.showTextHistory).environmentObject(model)
                 
             })
-            
+            .alert(model.alertTitle, isPresented: $model.showAlert,
+                   actions: {Button("Ok", action: {model.showAlert = false})},
+                   message: {Text(model.alertMessage)})
         }
     }
 }

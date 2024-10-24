@@ -5,7 +5,10 @@
   Created by Alex Demerjian on 7/1/22.
   
 */
-"Instruction Message One" = "まず、画面下部のマイクボタンをタップします。";
+"Use Microphone Button Tip Title" = "マイクでディクテート";
+"Use Microphone Button Tip Text" = "まず、マイク ボタンをタップして話し始めます。完了したら、もう一度マイクボタンをタップします。";
+"Use Keyboard Tip Title" = "テキストの入力または編集";
+"Use Keyboard Tip Text" = "灰色の領域をタップして、テキストを入力または編集できます。";
 "Copy Button" = "写し";
 "Save To History Button" = "履歴に保存";
 "Delete Button" = "削除";
@@ -26,7 +29,7 @@
 "Settings Font Color Three" = "フォントの色を選択する";
 "Feedback View Title" = "フィードバック";
 "Feedback Text One" = "リクエストや質問がありますか?";
-"Feedback Text Two" = "alxdemer@icloud.com までお送りください";
+"Feedback Text Two" = "alexander.demerjian@icloud.com までお送りください";
 "Privacy Policy Text One" = "このアプリケーションを使用することにより、プライバシーポリシーに同意したものとみなされます。";
 "Privacy Policy Text Two" = "プライバシーポリシーを見る";
 "Support Text One" = "お困りですか?";

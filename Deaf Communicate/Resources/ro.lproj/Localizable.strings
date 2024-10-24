@@ -5,7 +5,10 @@
   Created by Alex Demerjian on 7/1/22.
   
 */
-"Instruction Message One" = "Pentru a începe, atingeți butonul microfon din partea de jos a ecranului.";
+"Use Microphone Button Tip Title" = "Dictați cu microfonul";
+"Use Microphone Button Tip Text" = "Pentru a începe, atingeți butonul microfonului și apoi începeți să vorbiți. Atingeți din nou butonul microfonului când ați terminat.";
+"Use Keyboard Tip Title" = "Tastați sau editați text";
+"Use Keyboard Tip Text" = "Puteți atinge zona gri pentru a introduce sau edita textul.";
 "Copy Button" = "Copie";
 "Save To History Button" = "Salvați în istoric";
 "Delete Button" = "Șterge";
@@ -26,7 +29,7 @@
 "Settings Font Color Three" = "Selectați o culoare de font";
 "Feedback View Title" = "Părere";
 "Feedback Text One" = "Ai o cerere sau o întrebare?";
-"Feedback Text Two" = "Vă rugăm să-l trimiteți la alxdemer@icloud.com";
+"Feedback Text Two" = "Vă rugăm să-l trimiteți la alexander.demerjian@icloud.com";
 "Privacy Policy Text One" = "Prin utilizarea acestei aplicații, sunteți de acord cu Politica de confidențialitate Deaf Communicate.";
 "Privacy Policy Text Two" = "Vedeți Politica de confidențialitate";
 "Support Text One" = "A avea probleme?";

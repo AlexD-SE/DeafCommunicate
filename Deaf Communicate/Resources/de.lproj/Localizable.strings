@@ -5,7 +5,10 @@
   Created by Alex Demerjian on 7/1/22.
   
 */
-"Instruction Message One" = "Tippen Sie zunächst auf die Mikrofonschaltfläche am unteren Rand des Bildschirms.";
+"Use Microphone Button Tip Title" = "Diktieren mit Mikrofon";
+"Use Microphone Button Tip Text" = "Tippen Sie zunächst auf die Mikrofontaste und beginnen Sie dann zu sprechen. Tippen Sie erneut auf die Mikrofontaste, wenn Sie fertig sind.";
+"Use Keyboard Tip Title" = "Text eingeben oder bearbeiten";
+"Use Keyboard Tip Text" = "Sie können auf den grauen Bereich tippen, um den Text einzugeben oder zu bearbeiten.";
 "Copy Button" = "Kopieren";
 "Save To History Button" = "Im Verlauf speichern";
 "Delete Button" = "Löschen";
@@ -26,7 +29,7 @@
 "Settings Font Color Three" = "Wählen Sie eine Schriftfarbe";
 "Feedback View Title" = "Rückmeldung";
 "Feedback Text One" = "Haben Sie eine Anfrage oder eine Frage?";
-"Feedback Text Two" = "Bitte senden Sie es an alxdemer@icloud.com";
+"Feedback Text Two" = "Bitte senden Sie es an alexander.demerjian@icloud.com";
 "Privacy Policy Text One" = "Durch die Nutzung dieser App erklären Sie sich mit den Datenschutzbestimmungen von Deaf Communicate einverstanden.";
 "Privacy Policy Text Two" = "Datenschutzrichtlinie anzeigen";
 "Support Text One" = "Probleme Haben?";

@@ -5,7 +5,10 @@
   Created by Alex Demerjian on 7/1/22.
   
 */
-"Instruction Message One" = "Սկսելու համար հպեք ներքևի մոխրագույն հատվածին:";
+"Use Microphone Button Tip Title" = "Թելադրել խոսափողով";
+"Use Microphone Button Tip Text" = "Սկսելու համար հպեք խոսափողի կոճակին և սկսեք խոսել: Ավարտելուց հետո կրկին հպեք խոսափողի կոճակին:";
+"Use Keyboard Tip Title" = "Մուտքագրեք կամ խմբագրեք տեքստը";
+"Use Keyboard Tip Text" = "Տեքստը մուտքագրելու կամ խմբագրելու համար կարող եք հպել մոխրագույն հատվածին:";
 "Copy Button" = "Պատճենել";
 "Save To History Button" = "Պահել պատմության մեջ";
 "Delete Button" = "Ջնջել";
@@ -25,7 +28,7 @@
 "Settings Font Color Three" = "Ընտրեք տառատեսակի գույնը";
 "Feedback View Title" = "Հետադարձ կապ";
 "Feedback Text One" = "Ունե՞ք հարցում կամ հարց:";
-"Feedback Text Two" = "Խնդրում ենք ուղարկել այն alxdemer@icloud.com հասցեին";
+"Feedback Text Two" = "Խնդրում ենք ուղարկել այն alexander.demerjian@icloud.com հասցեին";
 "Privacy Policy Text One" = "Օգտագործելով այս հավելվածը՝ դուք համաձայնվում եք Deaf Communicate-ի գաղտնիության քաղաքականությանը:";
 "Privacy Policy Text Two" = "Դիտեք Գաղտնիության քաղաքականությունը";
 "Support Text One" = "Խնդիր ունե՞ք";

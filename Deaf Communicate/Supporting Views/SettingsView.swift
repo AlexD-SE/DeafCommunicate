@@ -37,96 +37,71 @@ struct SettingsView: View{
     
     var body: some View{
         
-        ScrollView{
+        Text(settingsFontStyleThree)
+            .frame(height:100)
+            .font(Font.custom(fontStyle, size: fontSize))
+            .foregroundColor(fontColor)
+            .background(.gray.opacity(0.3))
+            .cornerRadius(8)
+            .padding()
+        
+        Button(action:{
+            fontSize = 50.0
+            fontStyle = "SF Pro Regular"
+            fontColor = Color.black
+            isCustomFontColor = false}){
+                
+            Image(systemName: "arrow.counterclockwise")
+            Text(settingsFontTextThree)
+        }
+        .foregroundStyle(.red)
+        .buttonStyle(.bordered)
+        
+        List{
             
-            VStack{
-                
-                Text(settingsFontStyleThree)
-                    .frame(height:100)
-                    .font(Font.custom(fontStyle, size: fontSize))
-                    .foregroundColor(fontColor)
-                    .background(.gray.opacity(0.3))
-                    .cornerRadius(8)
-                    .padding()
-                
-                Button(action:{
-                    fontSize = 50.0
-                    fontStyle = "SF Pro Regular"
-                    fontColor = Color.black
-                    isCustomFontColor = false}){
-                        
-                    Image(systemName: "arrow.counterclockwise")
-                    Text(settingsFontTextThree)
-                }
-                .buttonStyle(.bordered)
-                
-                Text(settingsFontTextOne)
-                    .font(.system(size:30, weight: .heavy))
-                    .padding()
+            Section{
                 
                 HStack{
-                    Text(settingsFontTextTwo)
-                        .font(.system(size:20))
-                    Text("\(fontSize, specifier: "%.0f"))")
-                        .font(.system(size:20))
+                    Text(settingsFontTextOne)
+                    Spacer()
+                    Text("\(fontSize, specifier: "%.0f")")
                 }
                 
                 HStack{
-                    
                     Image(systemName: "minus")
                     Slider(value:$fontSize, in:25...150)
                         .padding()
                         .accentColor(Color.blue)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 15.0)
-                                .stroke(lineWidth: 2.0)
+                            RoundedRectangle(cornerRadius: 8.0)
+                                .stroke(lineWidth: 1.0)
                                 .foregroundColor(Color.gray)
                         )
                     Image(systemName: "plus")
                 }
-                .padding()
+            }
+            
+            Section{
                 
-                
-                Rectangle()
-                    .fill(.gray)
-                    .frame(height:2)
-                
-                Text(settingsFontStyleOne)
-                    .font(.system(size:30, weight: .heavy))
-                    .padding()
-                
-                
-                Picker(settingsFontStyleTwo, selection:$fontStyle){
+                HStack{
                     
-                    ForEach(fontStyles, id:\.self){
-                        
-                        Label($0.self, systemImage: "pencil")
+                    Picker(settingsFontStyleOne, selection:$fontStyle){
+                            
+                        ForEach(fontStyles, id:\.self){
+                            
+                            Text($0)
+                        }
                     }
+                    .pickerStyle(.menu)
                 }
-                .pickerStyle(.wheel)
                 
+                Toggle(settingsFontColorOne, isOn: $isCustomFontColor)
                 
-                Rectangle()
-                    .fill(.gray)
-                    .frame(height:2)
-                
-                VStack{
-                    
-                    Text(settingsFontColorOne)
-                        .font(.system(size:30, weight: .heavy))
-                        .toggleStyle(SwitchToggleStyle(tint: .blue))
-                        .padding()
-                    
-                    Toggle(settingsFontColorTwo, isOn: $isCustomFontColor)
-                        .padding()
-                    
-                }
-                .navigationTitle(settingsViewTitle)
             }
             
             if isCustomFontColor{
                 
-                Picker(settingsFontColorThree, selection: $fontColor){
+                Picker("", selection: $fontColor){
                     
                     ForEach(colors, id:\.self){
                         
@@ -144,10 +119,12 @@ struct SettingsView: View{
                     }
                     
                 }
-                .pickerStyle(.wheel)
+                .pickerStyle(.inline)
             }
             
         }
+        .listStyle(.insetGrouped)
+        .navigationTitle(settingsViewTitle)
         .onAppear(perform: {
             
             fontSize = deafCommunicateModel.fontSize
