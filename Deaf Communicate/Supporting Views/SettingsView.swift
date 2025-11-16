@@ -7,53 +7,80 @@
 
 import SwiftUI
 
+enum TextStyle: String, CaseIterable, Identifiable {
+    case sfProRegular = "SF Pro Regular"
+    case timesNewRoman = "Times New Roman"
+    case timesNewRomanBold = "Times New Roman Bold"
+    case arial = "Arial"
+    case arialBold = "Arial Bold"
+    case bradleyHandBold = "Bradley Hand Bold"
+    case copperplateBold = "Copperplate Bold"
+    case chalkboardSERegular = "Chalkboard SE Regular"
+    case chalkboardSEBold = "Chalkboard SE Bold"
+    case chalkduster = "Chalkduster"
+    case courier = "Courier"
+    case courierBold = "Courier Bold"
+    case noteworthyLight = "Noteworthy Light"
+    case noteWorthyBold = "Noteworthy Bold"
+    case optimaRegular = "Optima Regular"
+    case optimaBold = "Optima Bold"
+    case papyrus = "Papayrus"
+    case partyLETPlain = "Party LET Plain"
+    case rockwell = "Rockwell"
+    case rockwellBold = "Rochwell Bold"
+    case savoyeLETPlain = "Savoye LET Plain"
+    case symbol = "Symbol"
+    case verdana = "Verdana"
+    case verdanaBold = "Verdana Bold"
+    
+    var id: Self { self }
+}
+
 struct SettingsView: View{
     
     //General variables
-    @EnvironmentObject private var deafCommunicateModel: MainViewModel
+    @Bindable var model: MainViewModel
     let colors = [Color.black, Color.white, Color.blue, Color.red, Color.yellow, Color.orange, Color.green]
-    let fontStyles = ["SF Pro Regular", "Times New Roman",
-    "Times New Roman Bold", "Arial", "Arial Bold", "Bradley Hand Bold", "Copperplate Bold", "Chalkboard SE Regular", "Chalkboard SE Bold", "Chalkduster", "Courier", "Courier Bold", "Noteworthy Light", "Noteworthy Bold", "Optima Regular", "Optima Bold", "Papyrus", "Party LET Plain", "Rockwell", "Rockwell Bold", "Savoye LET Plain", "Symbol", "Verdana", "Verdana Bold"]
-    @State var fontSize = 50.0
-    @State var fontStyle = "SF Pro Regular"
-    @State var isCustomFontColor = false
-    @State var fontColor = Color.black
+    @State var textSize = 50.0
+    @State var textStyle: TextStyle = .sfProRegular
+    @State var isCustomTextColor = false
+    @State var textColor = Color.black
     
     //Localized variables (for multi language support)
     let settingsViewTitle : LocalizedStringKey = "Settings View Title"
-    let settingsFontTextOne : LocalizedStringKey = "Settings Font Text One"
-    let settingsFontTextTwo : LocalizedStringKey = "Settings Font Text Two"
-    let settingsFontTextThree: LocalizedStringKey = "Settings Font Text Three"
-    let settingsFontStyleOne : LocalizedStringKey = "Settings Font Style One"
-    let settingsFontStyleTwo : LocalizedStringKey = "Settings Font Style Two"
-    let settingsFontStyleThree : LocalizedStringKey = "Settings Font Style Three"
-    let settingsFontColorOne : LocalizedStringKey = "Settings Font Color One"
-    let settingsFontColorTwo : LocalizedStringKey = "Settings Font Color Two"
-    let settingsFontColorThree : LocalizedStringKey = "Settings Font Color Three"
+    let settingsAutoScrollText : LocalizedStringKey = "Settings Text Auto Scroll"
+    let settingsTextOne : LocalizedStringKey = "Settings Text One"
+    let settingsTextTwo: LocalizedStringKey = "Settings Text Two"
+    let settingsTextStyleOne : LocalizedStringKey = "Settings Text Style One"
+    let settingsTextStyleTwo : LocalizedStringKey = "Settings Text Style Two"
+    let settingsTextColorOne : LocalizedStringKey = "Settings Text Color One"
+    let settingsTextColorTwo : LocalizedStringKey = "Settings Text Color Two"
     
-    init(){
+    init(model: MainViewModel){
         UITextView.appearance().backgroundColor = .clear
+        self.model = model
     }
     
     var body: some View{
         
-        Text(settingsFontStyleThree)
+        Text(settingsTextStyleTwo)
             .frame(height:100)
-            .font(Font.custom(fontStyle, size: fontSize))
-            .foregroundColor(fontColor)
+            .font(Font.custom(textStyle.rawValue, size: textSize))
+            .foregroundColor(textColor)
             .background(.gray.opacity(0.3))
             .cornerRadius(8)
             .padding()
         
-        Button(action:{
-            fontSize = 50.0
-            fontStyle = "SF Pro Regular"
-            fontColor = Color.black
-            isCustomFontColor = false}){
-                
+        Button(action: {
+            textSize = 50.0
+            textStyle = .sfProRegular
+            textColor = Color.black
+            isCustomTextColor = false
+            model.textAutoScroll = true
+        }, label: {
             Image(systemName: "arrow.counterclockwise")
-            Text(settingsFontTextThree)
-        }
+            Text(settingsTextTwo)
+        })
         .foregroundStyle(.red)
         .buttonStyle(.bordered)
         
@@ -62,14 +89,18 @@ struct SettingsView: View{
             Section{
                 
                 HStack{
-                    Text(settingsFontTextOne)
+                    Toggle(settingsAutoScrollText, isOn: $model.textAutoScroll)
+                }
+                
+                HStack{
+                    Text(settingsTextOne)
                     Spacer()
-                    Text("\(fontSize, specifier: "%.0f")")
+                    Text("\(textSize, specifier: "%.0f")")
                 }
                 
                 HStack{
                     Image(systemName: "minus")
-                    Slider(value:$fontSize, in:25...150)
+                    Slider(value:$textSize, in:25...150)
                         .padding()
                         .accentColor(Color.blue)
                         .overlay(
@@ -82,31 +113,21 @@ struct SettingsView: View{
             }
             
             Section{
-                
                 HStack{
-                    
-                    Picker(settingsFontStyleOne, selection:$fontStyle){
-                            
-                        ForEach(fontStyles, id:\.self){
-                            
-                            Text($0)
+                    Picker(settingsTextStyleOne, selection:$textStyle){
+                        ForEach(TextStyle.allCases) { style in
+                            Text(style.rawValue).tag(style)
                         }
                     }
                     .pickerStyle(.menu)
                 }
                 
-                Toggle(settingsFontColorOne, isOn: $isCustomFontColor)
-                
+                Toggle(settingsTextColorOne, isOn: $isCustomTextColor)
             }
             
-            if isCustomFontColor{
-                
-                Picker("", selection: $fontColor){
-                    
-                    ForEach(colors, id:\.self){
-                        
-                        color in
-                        
+            if isCustomTextColor{
+                Picker("", selection: $textColor){
+                    ForEach(colors, id:\.self){ color in
                         HStack{
                             Rectangle()
                                 .border(Color.gray, width: 2)
@@ -115,9 +136,7 @@ struct SettingsView: View{
                             
                             Text(color.description)
                         }
-                        
                     }
-                    
                 }
                 .pickerStyle(.inline)
             }
@@ -126,27 +145,23 @@ struct SettingsView: View{
         .listStyle(.insetGrouped)
         .navigationTitle(settingsViewTitle)
         .onAppear(perform: {
-            
-            fontSize = deafCommunicateModel.fontSize
-            fontStyle = deafCommunicateModel.fontStyle
-            isCustomFontColor = deafCommunicateModel.isCustomFontColor
-            fontColor = deafCommunicateModel.fontColor
-            
+            textSize = model.textSize
+            textStyle = model.textStyle
+            isCustomTextColor = model.isCustomTextColor
+            textColor = model.textColor
         })
         .onDisappear(perform: {
-            
             //update user defaults
-            UserDefaults.standard.set(fontSize, forKey: "fontSize")
-            UserDefaults.standard.set(fontStyle, forKey: "fontStyle")
-            UserDefaults.standard.set(isCustomFontColor, forKey: "isCustomFontColor")
-            UserDefaults.standard.set(fontColor.determineInt(), forKey: "fontColorInt")
+            UserDefaults.standard.set(textSize, forKey: "textSize")
+            UserDefaults.standard.set(textStyle.rawValue, forKey: "textStyle")
+            UserDefaults.standard.set(isCustomTextColor, forKey: "isCustomTextColor")
+            UserDefaults.standard.set(textColor.determineInt(), forKey: "textColorInt")
             
             //update current text settings
-            deafCommunicateModel.fontSize = fontSize
-            deafCommunicateModel.fontStyle = fontStyle
-            deafCommunicateModel.isCustomFontColor = isCustomFontColor
-            deafCommunicateModel.fontColor = fontColor
-            
+            model.textSize = textSize
+            model.textStyle = textStyle
+            model.isCustomTextColor = isCustomTextColor
+            model.textColor = textColor
         })
         
     }

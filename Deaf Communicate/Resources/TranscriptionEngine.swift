@@ -86,6 +86,7 @@ public class TranscriptionEngine: NSObject{
                 
         // Verify that the speech recognizer is available
         guard speechRecognizer.isAvailable else {
+            
             delegate?.transcriptionEngineError(.speechRecognizerNotAvailable)
             return
         }
@@ -120,11 +121,20 @@ public class TranscriptionEngine: NSObject{
         }
         
         speechRecognizer.recognitionTask(with: speechAudioBufferRecognitionRequest) { result, error in
-            if let result = result {
-                self.delegate?.transcribed(result.bestTranscription.formattedString)
-            } else if let _ = error {
-                self.delegate?.transcriptionEngineError(.speechRecognitionFailed)
+            guard let nsError = error as NSError? else {
+                if let result = result{
+                    self.delegate?.transcribed(result.bestTranscription.formattedString)
+                }
+                return
             }
+            
+            // If error indicates no speech was detected, present no speech detected error
+            if nsError.domain == "kAFAssistantErrorDomain", nsError.code == 1110 {
+                self.delegate?.transcriptionEngineError(.speechRecognitionFailedNoSpeechDetected)
+                return
+            }
+            
+            self.delegate?.transcriptionEngineError(.speechRecognitionFailed)
         }
         
         // Prepare the audio engine
@@ -180,6 +190,7 @@ public enum TranscriptionEngineError: Error, LocalizedError{
     case speechRecognizerNotFoundForCurrentLocale
     case speechRecognizerNotAvailable
     case speechRecognitionFailed
+    case speechRecognitionFailedNoSpeechDetected
     case avAudioEngineStartFailed
     
     public var errorDescription: String? {
@@ -196,6 +207,8 @@ public enum TranscriptionEngineError: Error, LocalizedError{
             return "Speech recognition services are not available."
         case .speechRecognitionFailed:
             return "Speech recognizer failed to process the audio from the audio input."
+        case .speechRecognitionFailedNoSpeechDetected:
+            return "Speech recognizer failed to process the audio from the audio input because there was no speech detected."
         case .avAudioEngineStartFailed:
             return "Failed to start the AVAudioEngine."
         

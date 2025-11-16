@@ -10,12 +10,11 @@ import TipKit
 
 struct MainView: View {
     
-    @StateObject public var model = MainViewModel()
-    @Environment(\.colorScheme) var colorScheme
-    @FocusState var textEditorFocused : Bool
+    @State var model: MainViewModel = MainViewModel.shared
     
     //Localized variables (for multi language support)
     let copyButton : LocalizedStringKey = "Copy Button"
+    let shareButton : LocalizedStringKey = "Share Button"
     let saveToTextHistory : LocalizedStringKey = "Save To History Button"
     let deleteButton : LocalizedStringKey = "Delete Button"
     
@@ -25,165 +24,91 @@ struct MainView: View {
             
             ZStack{
                 
-                GeometryReader{
+                GeometryReader { geometry in
                     
-                    geometry in
-                    
-                    VStack{
-                        
-                        ScrollView{
+                    DictationView(model: model, geometryHeight: geometry.size.height)
+                        .toolbar{
                             
-                            TextEditor(text: $model.text)
-                                .focused($textEditorFocused)
-                                .font(Font.custom(model.fontStyle, size:model.fontSize))
-                                .autocorrectionDisabled(true)
-                                .foregroundColor(model.isCustomFontColor == false ? colorScheme == .dark ? Color.white : Color.black : model.fontColor)
-                                .frame(height: textEditorFocused == true ? geometry.size.height*0.75 : geometry.size.height*0.8)
-                                .scrollContentBackground(.hidden)
-                                .background(.gray.opacity(0.3))
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .overlay{
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.blue, lineWidth: 2)
-                                }
-                                .padding([.top, .leading, .trailing])
+                            //MARK: Toolbar
+                            ToolbarItem(placement: .topBarLeading){
                                 
-                        }
-                        .scrollDismissesKeyboard(.interactively)
-                        .padding(.top)
-                        .popoverTip(model.useKeyboardTip)
-                        .onTapGesture{
-                            model.useKeyboardTip.invalidate(reason: .actionPerformed)
-                        }
-                        
-                        
-                        if !Locale.current.identifier.contains("hy_"){
-                            
-                            if textEditorFocused == false{
-                                
-                                Button{
+                                Menu{
                                     
-                                    if model.isTranscribing{
-                                        
-                                        Task.init(priority: .userInitiated){
-                                            await model.stopTranscription()
-                                        }
-                                        
-                                    }else{
-                                        
-                                        Task.init(priority: .userInitiated){
-                                            await model.startTranscription()
-                                        }
-                                        
+                                    Button{
+                                        model.copyTextToClipboard()
+                                    }label:{
+                                        Label(copyButton, systemImage: "doc.on.doc")
                                     }
-
-                                }label:{
-                                    if model.isTranscribing{
-                                        Image(systemName: "microphone.circle")
-                                            .resizable()
-                                            .frame(width: 100, height: 100)
-                                            .foregroundStyle(.green)
-                                    }else{
-                                        Image(systemName: "microphone.slash.circle")
-                                            .resizable()
-                                            .frame(width: 100, height: 100)
-                                            .foregroundStyle(.red)
+                                    
+                                    ShareLink(item: model.text) {
+                                        Label("Share", systemImage: "square.and.arrow.up")
                                     }
-                                }
-                                .popoverTip(model.pressMicToBeginTip)
-                                .onTapGesture {
-                                    model.pressMicToBeginTip.invalidate(reason: .actionPerformed)
-                                }
-                                
-                            }
-                            
-                        }
-                        
-                    }
-                    .toolbar{
-                        
-                        ToolbarItem(placement: .topBarLeading){
-                            
-                            Menu{
-                                
-                                Button{
-                                    model.copyTextToClipboard()
+                                    
+                                    Button{
+                                        model.saveTextToTextHistory()
+                                    } label:{
+                                        Label(saveToTextHistory, systemImage: "square.and.arrow.down")
+                                    }
+                                    
+                                    Button(role: .destructive){
+                                        model.deleteText()
+                                    } label:{
+                                        Label(deleteButton, systemImage: "trash")
+                                    }
+                                    
                                 }label:{
-                                    Label(copyButton, systemImage: "doc.on.doc")
+                                    Image(systemName: "ellipsis.circle")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
                                 }
-                                
+                            }
+                            
+                            ToolbarItem(placement: .topBarLeading){
                                 Button{
-                                    model.saveTextToTextHistory()
-                                } label:{
-                                    Label(saveToTextHistory, systemImage: "square.and.arrow.down")
+                                    Task.init(priority: .userInitiated){
+                                        model.showTextHistory = true
+                                    }
+                                }label:{
+                                    Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+                                        .resizable()
+                                        .frame(width: 33, height: 30)
                                 }
-                                
-                                Button(role: .destructive){
-                                    model.deleteText()
-                                } label:{
-                                    Label(deleteButton, systemImage: "trash")
-                                }
-                                
-                            }label:{
-                                Image(systemName: "ellipsis.circle")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
                             }
-                        
+                            
+                            ToolbarItem(placement: .topBarTrailing){
+                                NavigationLink(destination: SettingsView(model: model)){
+                                    Image(systemName: "gear")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                }
+                            }
+                            
+                            ToolbarItem(placement: .topBarTrailing){
+                                NavigationLink(destination: FeedbackView()){
+                                    Image(systemName: "questionmark.bubble")
+                                        .resizable()
+                                        .frame(width: 28, height: 28)
+                                }
+                            }
                             
                         }
-                        
-                        
-                        ToolbarItem(placement: .topBarLeading){
-                            
-                            Button{
-                                Task.init(priority: .userInitiated){
-                                    model.showTextHistory = true
-                                }
-                            }label:{
-                                Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-                                    .resizable()
-                                    .frame(width: 33, height: 30)
-                            }
-                        }
-                        
-                        ToolbarItem(placement: .topBarTrailing){
-                            NavigationLink(destination: SettingsView().environmentObject(model)){
-                                Image(systemName: "gear")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                            }
-                        }
-                        
-                        ToolbarItem(placement: .topBarTrailing){
-                            NavigationLink(destination: FeedbackView()){
-                                Image(systemName: "questionmark.bubble")
-                                    .resizable()
-                                    .frame(width: 28, height: 28)
-                            }
-                        }
-                        
-                    }
-                    
                 }
-                .onAppear(){
+                .onAppear{
+                    UserDefaultsManager.shared.loadTextUserDefaults(textSize: &model.textSize, textStyle: &model.textStyle, isCustomTextColor: &model.isCustomTextColor, textColor: &model.textColor)
                     
-                    UserDefaultsManager.shared.loadTextUserDefaults(fontSize: &model.fontSize, fontStyle: &model.fontStyle, isCustomFontColor: &model.isCustomFontColor, fontColor: &model.fontColor)
-                        
                     TranscriptionEngine.shared.delegate = model
                     TranscriptionEngine.shared.prepare()
-                    
                 }
                 
-                if let notificationSymbol = model.notificationSymbol, let notificationText = model.notificationText, model.showNotification{
-                    NotificationView(symbol: notificationSymbol, text: notificationText)
+                if model.showNotification{
+                    NotificationView(symbol: model.notificationSymbol, text: model.notificationText)
+                        .transition(.move(edge: .top))
+                        .zIndex(1) // Tells SwiftUI to keep this view above everything else during view layout animations/transitions
                 }
-                
             }
+            .animation(.easeInOut, value: model.showNotification)
             .sheet(isPresented: $model.showTextHistory, onDismiss: {}, content: {
-                
-                TextHistoryView(showTextHistory: $model.showTextHistory).environmentObject(model)
-                
+                TextHistoryView(model: model)
             })
             .alert(model.alertTitle, isPresented: $model.showAlert,
                    actions: {Button("Ok", action: {model.showAlert = false})},

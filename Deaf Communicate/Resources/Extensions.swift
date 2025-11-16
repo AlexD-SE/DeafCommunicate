@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 extension Color{
-    
     func determineInt() -> Int{
         if (self == Color.black){
             return 1
@@ -27,11 +26,9 @@ extension Color{
             return 7
         }
     }
-    
 }
 
 extension Int{
-    
     func determineColor() -> Color{
         if (self == 1){
             return Color.black
@@ -49,5 +46,4 @@ extension Int{
             return Color.green
         }
     }
-    
 }

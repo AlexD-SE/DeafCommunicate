@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 public class UserDefaultsManager {
     
@@ -14,35 +14,34 @@ public class UserDefaultsManager {
     
     private init() {}
     
-    func loadTextUserDefaults(fontSize: inout Double, fontStyle: inout String, isCustomFontColor: inout Bool, fontColor: inout Color){
+    func loadTextUserDefaults(textSize: inout Double, textStyle: inout TextStyle, isCustomTextColor: inout Bool, textColor: inout Color){
         
-        if let fontSizeUserDefaultsValue = UserDefaults.standard.object(forKey: "fontSize") as? Double{
-            fontSize = fontSizeUserDefaultsValue
+        if let textSizeUserDefaultsValue = UserDefaults.standard.object(forKey: "textSize") as? Double{
+            textSize = textSizeUserDefaultsValue
         }else{
-            UserDefaults.standard.set(fontSize, forKey: "fontSize")
+            UserDefaults.standard.set(textSize, forKey: "textSize")
         }
         
-        if let fontStyleUserDefaultsValue = UserDefaults.standard.object(forKey: "fontStyle") as? String{
-            fontStyle = fontStyleUserDefaultsValue
+        if let textStyleUserDefaultsValue = UserDefaults.standard.object(forKey: "textStyle") as? String{
+            textStyle = TextStyle(rawValue: textStyleUserDefaultsValue) ?? .sfProRegular
         }else{
-            UserDefaults.standard.set(fontStyle, forKey: "fontStyle")
+            UserDefaults.standard.set(textStyle.rawValue, forKey: "textStyle")
         }
          
-        if let isCustomFontColorUserDefaultsValue = UserDefaults.standard.object(forKey: "isCustomFontColor") as? Bool{
-            isCustomFontColor = isCustomFontColorUserDefaultsValue
+        if let isCustomTextColorUserDefaultsValue = UserDefaults.standard.object(forKey: "isCustomTextColor") as? Bool{
+            isCustomTextColor = isCustomTextColorUserDefaultsValue
         }else{
-            UserDefaults.standard.set(isCustomFontColor, forKey: "isCustomFontColor")
+            UserDefaults.standard.set(isCustomTextColor, forKey: "isCustomTextColor")
         }
         
-        if let fontColorInt = UserDefaults.standard.object(forKey: "fontColorInt") as? Int{
-            fontColor = fontColorInt.determineColor()
+        if let textColorInt = UserDefaults.standard.object(forKey: "textColorInt") as? Int{
+            textColor = textColorInt.determineColor()
         }else{
-            UserDefaults.standard.set(fontColor.determineInt(), forKey: "fontColorInt")
+            UserDefaults.standard.set(textColor.determineInt(), forKey: "textColorInt")
         }
     }
     
     func firstTimeUsingApp() -> Bool{
-        
         if UserDefaults.standard.object(forKey: "firstTimeUsingApp") is Bool{
             UserDefaults.standard.set(false, forKey: "firstTimeUsingApp")
             return false
@@ -50,7 +49,6 @@ public class UserDefaultsManager {
             UserDefaults.standard.set(true, forKey: "firstTimeUsingApp")
             return true
         }
-        
     }
     
 }

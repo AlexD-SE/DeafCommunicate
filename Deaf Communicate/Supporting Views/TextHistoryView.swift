@@ -10,27 +10,85 @@ import SwiftUI
 struct TextHistoryView: View{
     
     //General variables
-    @Binding var showTextHistory: Bool
-    @EnvironmentObject private var mainViewModel: MainViewModel
-    //@Environment(\.dismiss) private var dismiss
+    @Bindable var model: MainViewModel
     @State var showNoTextHistoryAlert = false
+    @State var showDeleteTextHistoryAlert = false
     
     //Localized variables (for multi language support)
     let textHistoryViewTitle : LocalizedStringKey = "Text History View Title"
     let textHistoryViewInstructions : LocalizedStringKey = "Text History View Instructions"
     let noTextHistoryAlertTitle: LocalizedStringKey = "No Text History Alert Title"
     let noTextHistoryAlertMessage: LocalizedStringKey = "No Text History Alert Message"
+    let deleteTextHistoryAlertTitle: LocalizedStringKey = "Delete Text History Alert Title"
+    let deleteTextHistoryAlertMessage: LocalizedStringKey = "Delete Text History Alert Message"
     
     var body: some View{
         
         VStack{
             
-            if !(mainViewModel.textHistory.isEmpty){
+            if !(model.textHistory.isEmpty){
                 
-                Text(textHistoryViewTitle)
-                    .font(.title3)
-                    .bold()
-                    .padding()
+                ZStack(alignment: .center){
+                    
+                    if #available(iOS 26.0, *) {
+                        Button(action: {
+                            showDeleteTextHistoryAlert = true
+                        }, label: {
+                            Image(systemName: "trash")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .padding([.top, .bottom], 8)
+                                .padding([.trailing, .leading], 2)
+                        })
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .buttonStyle(.glassProminent)
+                        .tint(.red.opacity(0.9))
+                    } else {
+                        Button(action: {
+                            showDeleteTextHistoryAlert = true
+                        }, label: {
+                            Image(systemName: "trash.circle")
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                        })
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .tint(.red.opacity(0.9))
+                    }
+                    
+                    Text(textHistoryViewTitle)
+                        .font(.title3)
+                        .bold()
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    if #available(iOS 26.0, *) {
+                        Button(action: {
+                            model.showTextHistory = false
+                        }, label: {
+                            Image(systemName: "checkmark")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .padding([.top, .bottom], 10)
+                                .padding([.trailing, .leading], 5)
+                        })
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .buttonStyle(.glassProminent)
+                    } else {
+                        Button(action: {
+                            model.showTextHistory = false
+                        }, label: {
+                            Image(systemName: "xmark.circle")
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                        })
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    
+                }
                 
                 Text(textHistoryViewInstructions)
                     .font(.system(size:20))
@@ -39,14 +97,14 @@ struct TextHistoryView: View{
                 
                 List(){
                     
-                    ForEach($mainViewModel.textHistory, id:\.self){
+                    ForEach($model.textHistory, id:\.self){
                         
                         pastText in
                         
                         Button(){
                             
-                            mainViewModel.text = pastText.wrappedValue
-                            showTextHistory = false
+                            model.text = pastText.wrappedValue
+                            model.showTextHistory = false
                         }
                         label:{
                             
@@ -61,42 +119,40 @@ struct TextHistoryView: View{
                 
         }
         .alert(noTextHistoryAlertTitle, isPresented: $showNoTextHistoryAlert, actions: {
-            
             Button(action: {
-                
-                showTextHistory = false
-                
+                model.showTextHistory = false
             }, label: {
-                
                 Text("OK")
             })
-            
         }, message: {
-            
             Text(noTextHistoryAlertMessage)
-            
+        })
+        .alert(deleteTextHistoryAlertTitle, isPresented: $showDeleteTextHistoryAlert, actions: {
+            Button(role: .destructive, action: {
+                model.textHistory.removeAll()
+                showNoTextHistoryAlert = true
+            }, label: {
+                Text("Delete")
+            })
+        }, message: {
+            Text(deleteTextHistoryAlertMessage)
         })
         .onAppear{
-            
-            if mainViewModel.textHistory.count == 0{
-                
+            if model.textHistory.count == 0{
                 showNoTextHistoryAlert = true
-                
             }else{
                 showNoTextHistoryAlert = false
-                
             }
-            
         }
     }
     
     func deleteTextFromHistory(at offsets: IndexSet){
-        mainViewModel.textHistory.remove(atOffsets: offsets)
+        model.textHistory.remove(atOffsets: offsets)
         
-        if mainViewModel.textHistory.count == 0{
+        if model.textHistory.count == 0{
             Task(priority: .userInitiated){
                 await MainActor.run{
-                    showTextHistory = false
+                    model.showTextHistory = false
                 }
             }
         }
@@ -104,4 +160,8 @@ struct TextHistoryView: View{
     
 }
 
-
+#Preview {
+    let model = MainViewModel.shared
+    model.textHistory = ["HELLO WORLD"]
+    return TextHistoryView(model: model)
+}
